@@ -1,6 +1,6 @@
 # Parameters
 
-[![npm version](https://badge.fury.io/js/@universal-packages%2Fstate.svg)](https://www.npmjs.com/package/@universal-packages/parameters)
+[![npm version](https://badge.fury.io/js/@universal-packages%2Fparameters.svg)](https://www.npmjs.com/package/@universal-packages/parameters)
 [![Testing](https://github.com/universal-packages/universal-parameters/actions/workflows/testing.yml/badge.svg)](https://github.com/universal-packages/universal-parameters/actions/workflows/testing.yml)
 [![codecov](https://codecov.io/gh/universal-packages/universal-parameters/branch/main/graph/badge.svg?token=CXPJSN8IGL)](https://codecov.io/gh/universal-packages/universal-parameters)
 
