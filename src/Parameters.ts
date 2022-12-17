@@ -10,7 +10,7 @@ export default class Parameters {
     this.rootPath = rootPath
   }
 
-  public shape(...entries: ParamEntry[] | [ParamEntry[]]): Record<string, any> | Record<string, any>[] {
+  public shape<R = any>(...entries: ParamEntry[] | [ParamEntry[]]): R {
     const finalObject = {}
 
     for (let i = 0; i < entries.length; i++) {
@@ -24,7 +24,7 @@ export default class Parameters {
         }
       } else if (Array.isArray(currentEntry)) {
         if (Array.isArray(this.subject)) {
-          return this.subject.map((subSubject: any, index: number): any => new Parameters(subSubject, `${this.rootPath}/${index}`).shape(...currentEntry))
+          return this.subject.map((subSubject: any, index: number): any => new Parameters(subSubject, `${this.rootPath}/${index}`).shape(...currentEntry)) as any
         } else {
           throw new Error(`${this.rootPath} is not an array`)
         }
@@ -77,6 +77,6 @@ export default class Parameters {
       }
     }
 
-    return finalObject
+    return finalObject as any
   }
 }
