@@ -86,6 +86,14 @@ describe('Parameters', (): void => {
         }).toThrow('subject/deep/array is not an array')
       })
 
+      it('throws if root key not present', async (): Promise<void> => {
+        const parameters = new Parameters({})
+
+        expect((): void => {
+          parameters.shape({ deep: [{ key: { optional: true } }] })
+        }).toThrow('subject/deep was not provided and is not optional')
+      })
+
       it('throws if describing an enum of values and the subject does not comply', async (): Promise<void> => {
         const parameters = new Parameters({ select: 'maybe' })
 

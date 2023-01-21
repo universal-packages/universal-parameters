@@ -47,6 +47,10 @@ export default class Parameters {
               )
             }
           } else if (Array.isArray(currentAttributeDescriptor)) {
+            if (currentSubjectAttributeValue === undefined) {
+              throw new Error(`${this.rootPath}/${currentAttributeKey} was not provided and is not optional`)
+            }
+
             finalObject[currentAttributeKey] = new Parameters(currentSubjectAttributeValue, `${this.rootPath}/${currentAttributeKey}`).shape(...currentAttributeDescriptor)
           } else {
             if (currentSubjectAttributeValue === undefined) {
