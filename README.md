@@ -29,10 +29,10 @@ console.log(shaped)
 // > { user: { name: 'David' } }
 ```
 
-### shape()
+### Instance methods
+#### **`shape(...shape: Object | string[])`**
 
 The `shape` method arguments should be the list of attributes you want to preserve when shaping a subject, we call these each a `ParamEntry` and the whole list of them is the shape.
-
 #### String entries
 
 The most simple way of shaping an object is just by passing the name of the attributes you want to preserve from the subject.
