@@ -1,4 +1,4 @@
-import { Parameters, ParamEntry } from '../src'
+import { ParamEntry, Parameters } from '../src'
 
 describe('Parameters', (): void => {
   describe('shaping', (): void => {
