@@ -68,6 +68,16 @@ export default class Parameters {
                     )}], "${currentSubjectAttributeValue}" was given`
                   )
                 }
+              } else if (currentAttributeDescriptor.enumArray) {
+                if (Array.isArray(currentSubjectAttributeValue) && currentSubjectAttributeValue.every((value) => currentAttributeDescriptor.enumArray.has(value))) {
+                  finalObject[currentAttributeKey] = currentSubjectAttributeValue
+                } else {
+                  throw new Error(
+                    `${this.rootPath}/${currentAttributeKey} does not provide right enum array value, valid enum values are [${Array.from(
+                      currentAttributeDescriptor.enumArray
+                    ).join(', ')}], "${currentSubjectAttributeValue}" included invalid values`
+                  )
+                }
               } else if (currentAttributeDescriptor.shape) {
                 finalObject[currentAttributeKey] = new Parameters(currentSubjectAttributeValue, `${this.rootPath}/${currentAttributeKey}`).shape(
                   ...currentAttributeDescriptor.shape

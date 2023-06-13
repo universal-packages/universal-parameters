@@ -30,9 +30,11 @@ console.log(shaped)
 ```
 
 ### Instance methods
+
 #### **`shape(...shape: Object | string[])`**
 
 The `shape` method arguments should be the list of attributes you want to preserve when shaping a subject, we call these each a `ParamEntry` and the whole list of them is the shape.
+
 #### String entries
 
 The most simple way of shaping an object is just by passing the name of the attributes you want to preserve from the subject.
@@ -143,6 +145,21 @@ Alternatively you can describe the same as:
 
 ```js
 const shaped = parameters.shape({ settings: [{ color: { enum: new Set(['red', 'blue', 'white']) } }] })
+```
+
+#### Enum Arrays
+
+Complementary to enums you can specify that the value should be an array of the permitted values.
+
+```js
+import { Parameters } from '@universal-packages/parameters'
+
+const subject = { settings: { colors: ['white'] } }
+const parameters = new Parameters(subject)
+
+const shaped = parameters.shape({ settings: [{ colors: { enumArray: new Set(['red', 'blue', 'white']) } }] })
+
+// > { settings: { colors: ['white'] } }
 ```
 
 ### Errors

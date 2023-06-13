@@ -7,6 +7,7 @@ export interface ParamShape {
 
 export interface AttributeOptions {
   enum?: Set<string>
+  enumArray?: Set<string>
   optional?: boolean
   shape?: ParamEntry[] | [ParamEntry[]]
 }

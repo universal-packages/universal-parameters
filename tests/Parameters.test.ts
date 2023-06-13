@@ -20,7 +20,8 @@ describe('Parameters', (): void => {
               { x: 2, y: 2 }
             ],
             uiNames: { first: 'likes', second: 'monitory', _nop: true }
-          }
+          },
+          extra: ['a', 'b']
         },
         previous: {
           name: 'Oscar'
@@ -36,7 +37,8 @@ describe('Parameters', (): void => {
               settings: [
                 { night: {}, notifications: { enum: new Set(['all', 'none']) } },
                 { uiPositions: [['x', 'y']], uiNames: ['first', 'second'] }
-              ]
+              ],
+              extra: { enumArray: new Set(['a', 'b', 'c']) }
             }
           ]
         }
@@ -60,7 +62,8 @@ describe('Parameters', (): void => {
               { x: 2, y: 2 }
             ],
             uiNames: { first: 'likes', second: 'monitory' }
-          }
+          },
+          extra: ['a', 'b']
         }
       })
     })
@@ -103,6 +106,14 @@ describe('Parameters', (): void => {
         expect((): void => {
           parameters.shape({ select: { enum: new Set(['yes', 'no']) } })
         }).toThrow('subject/select does not provide right enum value, valid enum values are [yes, no], "maybe" was given')
+      })
+
+      it('throws if describing an enum of arrays and the subject does not comply', async (): Promise<void> => {
+        const parameters = new Parameters({ select: ['maybe'] })
+
+        expect((): void => {
+          parameters.shape({ select: { enumArray: new Set(['yes', 'no']) } })
+        }).toThrow('subject/select does not provide right enum array value, valid enum values are [yes, no], "maybe" included invalid values')
       })
 
       it('throws if describing a key and is not optional', async (): Promise<void> => {
