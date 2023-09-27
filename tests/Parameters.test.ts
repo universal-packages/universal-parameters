@@ -1,7 +1,7 @@
 import { ParamEntry, Parameters } from '../src'
 
-describe('Parameters', (): void => {
-  describe('shaping', (): void => {
+describe(Parameters, (): void => {
+  describe('shape', (): void => {
     it('shapes complex object following all the shape rules', async (): Promise<void> => {
       const subject = {
         user: {
